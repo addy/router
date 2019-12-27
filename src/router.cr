@@ -16,12 +16,11 @@ ws "/" do |socket|
       socket.send users.to_json
 
       # Cache the current user
-      user["pk"] = user["pk"]
       users[user["username"]] = user
 
       # Update the remaining connections with the new user information
       sockets.each_value do |a_socket|
-        a_socket.send user.to_json
+        a_socket.send users.values.to_json
       end
 
       # Update the sockets hash
@@ -40,7 +39,7 @@ ws "/" do |socket|
 
     # Notify all connections of the removed username
     sockets.each_value do |a_socket|
-      a_socket.send username
+      a_socket.send users.values.to_json
     end
 
     puts "User #{username} disconnected. Closing Socket: #{socket}"
