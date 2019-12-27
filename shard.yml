@@ -1,0 +1,17 @@
+name: router
+version: 0.1.0
+
+authors:
+  - Addison Shaw <addisonshaw93@gmail.com>
+
+dependencies:
+  sodium:
+    github: didactic-drunk/sodium.cr
+  kemal:
+    github: kemalcr/kemal
+
+license: MIT
+
+targets:
+  router:
+    main: src/router.cr
